@@ -1,0 +1,5 @@
+puts"Hello world"
+a=44
+b=7
+c=a+b
+puts c
