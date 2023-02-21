@@ -1,13 +1,18 @@
 #Print Fibonacci series 
 
+puts"Enter the limit:"
+lim=gets.chomp.to_i
 a=0
 b=1
 puts"Fibonacci Series:"
 puts a
 puts b
-while b<100
+while b<lim
 c=a+b
+if c>100
+else
 puts c
+end
 a=b
 b=c
 end

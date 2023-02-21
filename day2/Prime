@@ -1,6 +1,7 @@
 #Check whether prime or not
 
-a=11
+puts"Enter the number"
+a=gets.chomp.to_i
 count=0
 
 for i in 1..a
@@ -9,7 +10,7 @@ count+=1
 end
 end
 if count<3
-puts "Given number is prime"
+puts "#{a} is prime"
 else
-puts "Given number not prime"
+puts "#{a} not prime"
 end

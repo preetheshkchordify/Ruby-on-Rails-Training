@@ -1,10 +1,11 @@
 # Assign a number to a varibale, if it is odd, print odd, else print even
 
-a=24
+puts"Enter the number:"
+a=gets.chomp.to_i
 if a%2==0
-puts "Even Number"
+puts "#{a} is Even Number"
 else
-puts "Odd Number"
+puts "#{a} is Odd Number"
 end
 
 
