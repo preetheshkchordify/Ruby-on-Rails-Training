@@ -1,0 +1,15 @@
+#Check whether prime or not
+
+a=11
+count=0
+
+for i in 1..a
+if a%i==0
+count+=1
+end
+end
+if count<3
+puts "Given number is prime"
+else
+puts "Given number not prime"
+end

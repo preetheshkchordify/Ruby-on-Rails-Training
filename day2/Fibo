@@ -1,0 +1,13 @@
+#Print Fibonacci series 
+
+a=0
+b=1
+puts"Fibonacci Series:"
+puts a
+puts b
+while b<100
+c=a+b
+puts c
+a=b
+b=c
+end

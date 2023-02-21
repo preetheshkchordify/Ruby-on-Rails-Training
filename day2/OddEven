@@ -1,0 +1,10 @@
+# Assign a number to a varibale, if it is odd, print odd, else print even
+
+a=24
+if a%2==0
+puts "Even Number"
+else
+puts "Odd Number"
+end
+
+

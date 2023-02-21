@@ -1,0 +1,8 @@
+#Assign a stirng to a variable, if string length is greater than 8, print eligible for password creation
+
+a="ChordifyTech"
+if a.length > 8
+puts"Eligible for password creation"
+else 
+puts"Not Eligible for password creation"
+end
