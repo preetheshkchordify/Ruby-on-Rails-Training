@@ -66,11 +66,8 @@ Rename column DOB to Date_Of_Birth;
 
 5. Display the name of all students whose stream is not Science
 
-Alter table student_Details
-Rename column stdname to student_name;
-
-Alter  table student_Details
-Rename column DOB to Date_Of_Birth;
+Select student_name from student_Details
+where stream  not like 'science';
 
 
 
