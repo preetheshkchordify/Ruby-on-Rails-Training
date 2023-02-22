@@ -91,7 +91,7 @@ where grade=200;
 2.Display all the customers, who are either belongs to the city New York or not had a grade above 100
 
 select * from customer
-where grade>200 or city='New York';
+where grade<100 or city='New York';
 
 3.Find those salesmen with all information who gets the commission within a range of 0.12 and 0.14.
 
@@ -115,6 +115,8 @@ where name like 'N__l%';
 6. Find the max and min purchase amount of all orders.
 
 select Max(purch_amt) as max_Purch_Amt from orders;
+
+select Min(purch_amt) as min_Purch_Amt from orders;
 
 7. Display name and commission of all the salesmen
 
