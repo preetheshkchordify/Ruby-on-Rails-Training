@@ -15,9 +15,10 @@
             <div class="col-6 ms-5 border border-danger">
                 <div class="ms-5">
     <h1>BMI Calcultor</h1>
-    <input style="margin:5px;" placeholder="Enter your height in cm" type="number" id="heig">
-    <input style="margin:5px;" placeholder="Enter your weight in kg" type="number" id="weig"><br>
-    <input style="margin:5px;" onclick="BMI()" type="button" Value="Calculate" id="calc">
+    <input style="margin:5px;" placeholder="Enter your height in cm" onchange="change_height()" type="number" id="heig">
+    <input style="margin:5px;" placeholder="Enter your weight in kg" onchange="change_weight()" type="number" id="weig"><br>
+    <label id="id1" ></label><br>
+    <input style="margin:5px; background-color: aquamarine;" onclick="BMI()" type="button" Value="Calculate" id="calc">
     <label class="fs-4" id="display" for=""></label>
                 </div>
             </div>
@@ -25,7 +26,32 @@
         </div>
     </div>
 </body>
-<script>let BMI =()=>{
+<script>
+document.getElementById("calc").disabled = true;
+function change_height() {
+    if(document.getElementById("heig").value > 0 ) {
+
+            id1.innerHTML=''
+    }
+    else{
+        id1.innerHTML='Enter positive value of height'
+    }
+}
+function change_weight(){
+    if(document.getElementById('weig').value>0){
+        id1.innerHTML=''
+        document.getElementById("calc").disabled = false;
+    }
+    else{
+        id1.innerHTML='Enter positive value of weight'
+
+    }
+}
+
+
+
+
+let BMI =()=>{
     let h=heig.value
     let w=weig.value
     console.log(h,w);

@@ -14,10 +14,12 @@
                 <div class="col-6 ms-5 border border-danger">
                     <div class="ms-5">
         <h1 style="color: blue;">Trip Share</h1>
-    <input style="margin:5px" type="number" id="amt" placeholder="Enter total trip amount"><br>
-    <input style="margin:5px" type="number" id="people" placeholder="Enter total people for trip"><br>
+    <input style="margin:5px" type="number" id="amt" placeholder="Enter total trip amount" onchange="Calculate_amt()"><br>
     
-    <button style="margin:5px" onclick="Calc()">Calculate</button>
+    <br>
+    <input style="margin:5px" type="number" id="people" placeholder="Enter total people for trip"  onchange="Calculate_plp()"><br>
+    <label id="id1"></label><br>
+    <button style="margin:5px" id="click_btn" onclick="Calc()">Calculate</button>
     <label style="color: red;" id="Split"></label><br>
                 </div>
             </div>
@@ -27,12 +29,33 @@
 
 </body>
 <script>
-let Calc=()=>{
+    
+
+document.getElementById("click_btn").disabled = true;
+function Calculate_amt() {
+    if(document.getElementById("amt").value > 0 ) {
+
+            id1.innerHTML=''
+    }
+    else{
+        id1.innerHTML='Enter positive number of amount'
+    }
+}
+function Calculate_plp(){
+    if(document.getElementById('people').value>0){
+        id1.innerHTML=''
+        document.getElementById("click_btn").disabled = false;
+    }
+    else{
+        id1.innerHTML='Enter positive number of peoples'
+
+    }
+}
+function Calc(){
     let a=amt.value
     let p=people.value
-    cal=a/p
-    Split.innerHTML=cal
-
+    calc=a/p
+    Split.innerHTML=calc
 }
 </script>
 </html>
