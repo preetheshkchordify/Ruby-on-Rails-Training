@@ -13,7 +13,7 @@ n=gets.chomp.to_i
 input = []
 puts "Enter number"
 while n>0
-  num = gets.chomp.to_i
+  num = gets.chomp.to_f
   input.push(num)
   n = n-1
 end
@@ -61,7 +61,7 @@ input.each do|num|
 	end
 end
 
-puts"The result is #{array_a}
+puts"The result is #{array_a}"
 
 
 4. Given an array of integers, write a method to return a new array with the elements in reverse order. 
@@ -139,7 +139,7 @@ Initialize -
 
   { name: "Bob", sales: 20 }, 
 
-  { name: "Charlie", sales: 15 }, 
+  { name: "Charlie", sales: 35 }, 
 
   { name: "Dave", sales: 25 } 
 
@@ -158,9 +158,9 @@ max_value=0
 name=''
 sales_data.each do |value| 
 	if value[:sales]>max_value
-	max_value=value[:sales]
-	name=value[:name]
-end
+		max_value=value[:sales]
+		name=value[:name]
+	end
 end
 puts"#{name} made the most sales with #{max_value} sales. "	
 
@@ -287,12 +287,10 @@ pswd=gets.chomp
 flag=0
 
 users.each do|value|
-	if value[:username]==uname
-		if value[:password]==pswd
+	if value[:username]==uname && value[:password]==pswd
 			puts"Login successful"
 			flag+=1
 		break
-		end
 	end
 end
 if flag==0
