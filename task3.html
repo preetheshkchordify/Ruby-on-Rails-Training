@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="box" id="box">
+            <form action="">
+                <input type="number" name="display" id="calcScreen"> <br>
+
+                <input type="button" onclick="displayContent('(')" value="("  id="but">
+                <input type="button" value=")" onclick="displayContent(')')" id="but">
+                <input type="button" value="Del" id="but">
+                <input type="button" value="/" onclick="displayContent('/')" id="but"> <br>
+
+                <input type="button" onclick="displayContent('7')" value="7" id="but">
+                <input type="button" onclick="displayContent('8')" value="8" id="but">
+                <input type="button" onclick="displayContent('9')" value="9" id="but">
+                <input type="button" onclick="displayContent('*')" value="*" id="but"> <br>
+
+                <input type="button" onclick="displayContent('4')" value="4" id="but">
+                <input type="button" value="5" onclick="displayContent('5')" id="but">
+                <input type="button" value="6" onclick="displayContent('6')" id="but">
+                <input type="button" value="-" onclick="displayContent('-')" id="but"> <br>
+
+                <input type="button" value="1" onclick="displayContent('1')" id="but">
+                <input type="button" value="2" onclick="displayContent('2')" id="but">
+                <input type="button" value="3" onclick="displayContent('3')" id="but">
+                <input type="button" value="+" onclick="displayContent('+')" id="but"><br>
+
+                <input type="button" value="AC" onclick="displayAllclear()" id="but">
+                <input type="button" value="0" onclick="displayContent('0')" id="but">
+                <input type="button" value="." onclick="displayContent('.')"  id="but">
+                <input type="button" value="=" onclick="calculateContent()" id="but">
+
+
+            </form>
+            </div>
+            <col-4></col-4>
+        </div>
+    </div>
+</body>
+<script>
+    function displayContent(content){
+        calcScreen.value+=content
+    }
+    function displayAllclear(){
+        calcScreen.value=''
+    }
+    function calculateContent(){
+        calcScreen.value=eval(calcScreen.value)
+    }
+</script>
+</html>

@@ -116,7 +116,7 @@ where name like 'N__l%';
 
 select Max(purch_amt) as max_Purch_Amt from orders;
 
-select Min(purch_amt) as min_Purch_Amt from orders;
+select Min(purch_amt) as min_Purch_Amt from orders
 
 7. Display name and commission of all the salesmen
 

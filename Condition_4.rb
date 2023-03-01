@@ -7,7 +7,7 @@
 
 puts"Discount calculator"
 puts"ENter your bill amt"
-bill_amt=gets.chomp.to_i
+bill_amt=gets.chomp.to_f
 discount=0
 if bill_amt>100
 	discount=bill_amt*10/100

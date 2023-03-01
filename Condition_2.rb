@@ -1,4 +1,6 @@
-
+#You are creating a program that determines if a number is positive, negative,
+#or zero. Write a Ruby program that takes a number as input and outputs
+#whether it is positive, negative, or zero. 
 
 puts"Enter a number:"
 input=gets.chomp.to_i
