@@ -1,56 +1,48 @@
-# 11. You have a list of usernames and passwords stored in a hash in your Ruby program. You need to create a login function that accepts a username and password as parameters and checks if they match the values in the hash. If the username and password are valid, the function should return "Login Successful". Otherwise, it should return "Invalid username or password". 
+# frozen_string_literal: true
 
-# 	users = { 
+# 11. You have a list of usernames and passwords stored in a hash in your Ruby program. You need to create a login function that accepts a username and password as parameters and checks if they match the values in the hash. If the username and password are valid, the function should return "Login Successful". Otherwise, it should return "Invalid username or password".
 
-# 	  "user1" => "pass1", 
+# 	users = {
 
-# 	  "user2" => "pass2", 
+# 	  "user1" => "pass1",
 
-# 	  "user3" => "pass3" 
+# 	  "user2" => "pass2",
 
-# 	} 
+# 	  "user3" => "pass3"
 
+# 	}
 
+#  users=[
 
-#  users=[ 
+#   { username: "user1", password: "pass1" },
 
-#   { username: "user1", password: "pass1" }, 
+#   { username: "user2", password: "pass2" },
 
-#   { username: "user2", password: "pass2" }, 
+#   { username: "user3", password: "pass3" },
 
-#   { username: "user3", password: "pass3" }, 
+# ]
 
-# ] 
+users = [
 
+  { username: 'user1', password: 'pass1' },
 
+  { username: 'user2', password: 'pass2' },
 
+  { username: 'user3', password: 'pass3' }
 
- users=[ 
+]
 
-  { username: "user1", password: "pass1" }, 
+puts 'Enter username'
+uname = gets.chomp
+puts 'Enter password'
+pswd = gets.chomp
+flag = 0
 
-  { username: "user2", password: "pass2" }, 
+users.each do |value|
+  next unless value[:username] == uname && value[:password] == pswd
 
-  { username: "user3", password: "pass3" }, 
-
-] 
-
-puts"Enter username"
-uname=gets.chomp
-puts"Enter password"
-pswd=gets.chomp
-flag=0
-
-users.each do|value|
-	if value[:username]==uname && value[:password]==pswd
-			puts"Login successful"
-			flag+=1
-			break	
-	end
+  puts 'Login successful'
+  flag += 1
+  break
 end
-if flag==0
- puts"Invalid credential"
-end
-
-
-
+puts 'Invalid credential' if flag.zero?

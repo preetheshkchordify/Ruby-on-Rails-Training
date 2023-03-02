@@ -1,9 +1,11 @@
-#9. A restaurant has a list of menu items and their prices. The restaurant
-#owner wants to print the menu to the console, along with the price of each
-#item, and then calculate the total cost of a customer's order. Write a Ruby
-#program to solve this problem. 
+# frozen_string_literal: true
 
-puts" 
+# 9. A restaurant has a list of menu items and their prices. The restaurant
+# owner wants to print the menu to the console, along with the price of each
+# item, and then calculate the total cost of a customer's order. Write a Ruby
+# program to solve this problem.
+
+puts "
 	  Idli:30
 	  Dosa:40
 	  Poori:45
@@ -11,61 +13,56 @@ puts"
 	  Chappathi:35
 	  Tea:10
 	  Coffee:15"
-puts"Your order please"
-order=gets.chomp
-sum=0
-while order!="Done"
-	# if order=='Dosa'
-	# 	sum=sum+40
-	# elsif order=='Idli'
-	# 	sum=sum+30
-	# elsif order=='Poori'
-	# 	sum=sum+45
-	# elsif order=='Chappathi'
-	# 	sum=sum+35
-	# elsif order=='Masaladosa'
-	# 	sum=sum+55
-	# end
-	case order
-	when 'Dosa'
-		sum=sum+40
-	when 'Idli'
-		sum=sum+30
-	when 'Poori'
-		sum=sum+45
-	when 'Masaladosa'
-		sum=sum+55
-	when 'Chappathi'
-		sum=sum+35
-	when 'Tea'
-		sum=sum+10
-	when 'Coffee'
-		sum=sum+15
-	end
-	puts"\nAny item more"
-	order=gets.chomp
+puts 'Your order please'
+order = gets.chomp
+sum = 0
+while order != 'Done'
+  # if order=='Dosa'
+  # 	sum=sum+40
+  # elsif order=='Idli'
+  # 	sum=sum+30
+  # elsif order=='Poori'
+  # 	sum=sum+45
+  # elsif order=='Chappathi'
+  # 	sum=sum+35
+  # elsif order=='Masaladosa'
+  # 	sum=sum+55
+  # end
+  case order
+  when 'Dosa'
+    sum += 40
+  when 'Idli'
+    sum += 30
+  when 'Poori'
+    sum += 45
+  when 'Masaladosa'
+    sum += 55
+  when 'Chappathi'
+    sum += 35
+  when 'Tea'
+    sum += 10
+  when 'Coffee'
+    sum += 15
+  end
+  puts "\nAny item more"
+  order = gets.chomp
 end
-puts"\nTotal price is #{sum}"
+puts "\nTotal price is #{sum}"
 
+# menu_table = {
 
+#   "dosa" => 40,
 
+#   "idli" => 30,
 
-
-# menu_table = { 
-
-#   "dosa" => 40, 
-
-#   "idli" => 30, 
-
-#   "masaladosa" => 45, 
+#   "masaladosa" => 45,
 
 #   "poori" => 35,
 
 #   "chappathi"=>30
 
-# } 
+# }
 # puts menu_table
-
 
 # puts"Enter no of items"
 # n=gets.chomp.to_i
