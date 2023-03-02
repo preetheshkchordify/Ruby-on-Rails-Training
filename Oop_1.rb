@@ -11,19 +11,18 @@
 class Employee
    # constructor method
 
-   def initialize(n,s)
-      @name, @salary = n, s
+   def initialize(n,s,d)
+      @name, @salary, @days = n, s, d
    end
-   def getNamesalary
+   def getDisplay
       puts @name
       puts @salary
    end
 
 end
 class Manager < Employee
-  def initialize(d)
-    @days = d
-    super("Aju",30000.0)
+  def getDisplay
+    super
   end
   def getBonus
 
@@ -33,6 +32,7 @@ class Manager < Employee
    
 end
 
-mngr = Manager.new(30)
-mngr.getNamesalary
+mngr = Manager.new('aju',30000.0,30)
+mngr.getDisplay
 mngr.getBonus
+
