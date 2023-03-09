@@ -1,6 +1,6 @@
 <h1>New Student</h1>
 
-<%=  form_with model: @student do |form| %>
+<%=  form_with model: @student, multiport: true do |form| %>
   <div>
     <%= form.label :first_name %> <br>
     <%= form.text_field :first_name %>

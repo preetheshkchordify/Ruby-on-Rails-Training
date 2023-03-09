@@ -7,4 +7,5 @@ class Student < ApplicationRecord
   validates :phone_number,   :presence => {:message => 'hello world, bad operation!'},
                      :numericality => true,
                      :length => { :minimum => 10, :maximum => 15 }
+  mount_uploader :image, AvatarUploader
 end

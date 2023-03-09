@@ -22,7 +22,7 @@
       <td><%= student.email %></td>
       <td><%= student.phone_number %></td>
       <td><%= student.stream %></td>
-      <td><%= student.image %></td>
+      <td><img width="250" height="200" src="<%= (url_for(student.image.url)) %>"></td>
       <% if student.confirm.to_i==1%>
         <td>True</td>
       <% else %>
