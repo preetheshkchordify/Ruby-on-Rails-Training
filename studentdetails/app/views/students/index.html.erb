@@ -6,6 +6,11 @@
       <th>First Name</th>
       <th>Last Name</th>
       <th>Email</th>
+      <th>Phone</th>
+      <th>Stream</th>
+      <th>Image</th>
+      <th>Confirmation</th>
+
       <th colspan="3">Action</th>
     </tr>
   </thead>
@@ -15,6 +20,17 @@
       <td><%= student.first_name %></td>
       <td><%= student.last_name %></td>
       <td><%= student.email %></td>
+      <td><%= student.phone_number %></td>
+      <td><%= student.stream %></td>
+      <td><%= student.image %></td>
+      <% if student.confirm.to_i==1%>
+        <td>True</td>
+      <% else %>
+        <td>False</td>
+      <% end%>
+
+
+
       <td><%= link_to 'View', student %></td>
       <td><%= link_to 'Edit', edit_student_path(student) %></td>
       <!-- <td><%= link_to 'Delete', student, method: :delete, data: { confirm:'Are you sure?'} %></td> -->

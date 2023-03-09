@@ -16,6 +16,22 @@
     <%= form.email_field :email %>
   </div>
   <div>
+    <%= form.label :phone_number %> <br>
+    <%= form.number_field :phone_number %>
+  </div>
+  
+<div>
+  <%= form.label "Your stream" %> <br>
+   <%= form.radio_button :stream, 'PCB'%>PCB <br>
+   <%= form.radio_button :stream, 'PCM'%>PCM <br>
+   <%= form.radio_button :stream, 'Commerce'%>Commerce <br>
+ </div>
+ <div>
+  <%= form.label :image%> <br>
+  <%= form.file_field :image%>
+  <div>
+    <%= form.label "Are you sure" %>
+  <%= form.check_box :confirm%>
     <%= form.submit %>
   </div>
 <% end %>

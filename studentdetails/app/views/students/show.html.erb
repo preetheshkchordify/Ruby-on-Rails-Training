@@ -3,5 +3,16 @@
 <p><strong>Firstname:</strong><%=@student.first_name %> </p>
 <p><strong>Lastname:</strong><%=@student.last_name %> </p>
 <p><strong>Email:</strong><%=@student.email %> </p>
+<p><strong>Phone:</strong><%=@student.phone_number %> </p>
+<p><strong>Stream:</strong><%=@student.stream %> </p>
+<p><strong>image:</strong><%=@student.image %> </p>
+<p><strong>Are you sure:</strong><% if @student.confirm.to_i==1%>
+                                      <td>True</td>
+                                    <% else %>
+                                      <td>False</td>
+                                    <% end%></p>
+
+
+  
 
 <%= link_to 'Back', students_path %> | <%= link_to 'Edit', edit_student_path(@student) %>

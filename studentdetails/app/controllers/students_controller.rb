@@ -1,5 +1,6 @@
-class StudentsController < ApplicationController
+# frozen_string_literal: true
 
+class StudentsController < ApplicationController
   def index
     @student = Student.all
   end
@@ -20,7 +21,7 @@ class StudentsController < ApplicationController
   def show
     @student = Student.find(params[:id])
   end
-  
+
   def edit
     @student = Student.find(params[:id])
   end
@@ -30,7 +31,7 @@ class StudentsController < ApplicationController
     if @student.update(student_params)
       redirect_to student_path(@student)
     else
-      render:edit
+      render :edit
     end
   end
 
@@ -39,9 +40,10 @@ class StudentsController < ApplicationController
     @student.destroy
     redirect_to students_path
   end
-  private
-  def student_params
-    params.require(:student).permit(:first_name, :last_name, :email)
-  end
 
+  private
+
+  def student_params
+    params.require(:student).permit(:first_name, :last_name, :email, :phone_number, :stream, :confirm)
+  end
 end
