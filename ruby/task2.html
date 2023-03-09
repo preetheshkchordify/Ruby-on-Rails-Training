@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Share</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+        <div class="container">
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-6 ms-5 border border-danger">
+                    <div class="ms-5">
+        <h1 style="color: blue;">Trip Share</h1>
+    <input style="margin:5px" type="number" id="amt" placeholder="Enter total trip amount" onchange="Calculate_amt()"><br>
+    
+    <br>
+    <input style="margin:5px" type="number" id="people" placeholder="Enter total people for trip"  onchange="Calculate_plp()"><br>
+    <label id="id1"></label><br>
+    <button style="margin:5px" id="click_btn" onclick="Calc()">Calculate</button>
+    <label style="color: red;" id="Split"></label><br>
+                </div>
+            </div>
+                <div class="col-3"></div>
+            </div>
+        </div>
+
+</body>
+<script>
+    
+
+document.getElementById("click_btn").disabled = true;
+function Calculate_amt() {
+    if(document.getElementById("amt").value > 0 ) {
+
+            id1.innerHTML=''
+    }
+    else{
+        id1.innerHTML='Enter positive number of amount'
+    }
+}
+function Calculate_plp(){
+    if(document.getElementById('people').value>0){
+        id1.innerHTML=''
+        document.getElementById("click_btn").disabled = false;
+    }
+    else{
+        id1.innerHTML='Enter positive number of peoples'
+
+    }
+}
+function Calc(){
+    let a=amt.value
+    let p=people.value
+    calc=a/p
+    Split.innerHTML=calc
+}
+</script>
+</html>

@@ -1,0 +1,86 @@
+SQL3 
+
+Insert student_Details values into the table student_Details
+
+CREATE TABLE student_Details (
+StdID int,
+StdName varchar(255),
+Sex varchar(255),
+Percentage int,
+Class int,
+Sec varchar(255),
+Stream varchar(255),
+DOB date
+);
+select * from student_Details;
+INSERT into student_Details(
+Values(1011,'Prakhar','Male',43,12,'A','Science','1997-04-22'));
+INSERT into student_Details(
+Values(1012,'Raghav','Male',58,12,'A','Commerce','1997-12-21'));
+INSERT into student_Details(
+Values(1013,'Sahil','Male',57,12,'A','Commerce','1997-08-13'));
+INSERT into student_Details(
+Values(1014,'Swati','Female',98,11,'A','Science','1996-08-13'));
+INSERT into student_Details(
+Values(1015,'Harsh','Male',58,11,'B','Commerce','2003-08-28'));
+INSERT into nobel_win(
+Values(1994,'Economics','Reinhard Seltan','Germany','Economist'));
+INSERT into student_Details(
+Values(1016,'Harshit','Male',98,11,'B','Science','2003-05-22'));
+
+select * from student_Details;
+
+
+
+
+1. To add a column (FIELD)in the STUDENT table,for example TeacherID as VARCHAR(20);Type the statement and press enter key, note the new field that you have added as TeacherID
+
+Alter Table student_Details
+Add TeacherID varchar(20);
+select * from student_Details;
+
+
+2. To Drop (Delete) a field form a table. For e.g you wantto delete TeacherID field.
+
+Alter Table student_Details
+Drop column TeacherID ;
+select * from student_Details;
+
+
+3. To subtract 5 form all students percentage and display name and percentage.
+
+Update student_Details
+SET percentage=percentage-5;
+select stdname, percentage from student_Details;
+
+
+4. Using column alise for example we wantto display StdName as Student Name and DOB as Date of Birththen the statement will be.
+
+Alter table student_Details
+Rename column stdname to student_name;
+
+Alter  table student_Details
+Rename column DOB to Date_Of_Birth;
+
+
+
+5. Display the name of all students whose stream is not Science
+
+Select student_name from student_Details
+where stream  not like 'science';
+
+
+
+6. To change a studentname from SWATI to SWATY whose StdID is 1014 and also changepercentage 86.
+
+Update student_Details
+SET student_name='Swati',percentage=86
+where student_name='Swaty';
+select student_name, percentage from student_Details;
+
+
+7. To delete the records form student table where StdId is 1016
+
+Delete from student_Details
+where stdid=1016;
+select * from student_Details;

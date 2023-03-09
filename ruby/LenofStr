@@ -1,0 +1,10 @@
+#Assign a string to a variable, if string length is greater than 8, print eligible for password creation
+
+puts"Enter the string: "
+a=gets.chomp
+puts a.length
+if a.length > 8
+puts"Eligible for password creation"
+else 
+puts"Not Eligible for password creation"
+end
