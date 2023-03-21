@@ -1,0 +1,14 @@
+
+<h1>Showing Details of <%= @sale.product.name %></h1>
+<div>
+  <h3>Sales </h3>
+  <p><%= @sale.count %></p>
+  <h3>Price</h3>
+  <p><%= @sale.price %></p>
+</div>
+<div>
+  <%#= link_to 'Buy' , new_customer_session_path, :action => "reduce" %>
+  <%= button_to "Paynow", sales_path(product_id: @sale.product_id, price: @sale.price, count: 1, payment_status: "completed") %>
+  <%= link_to "Cancel", products_path, payment_status: "failed" %>
+
+</div>  

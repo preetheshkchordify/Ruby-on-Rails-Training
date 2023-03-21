@@ -1,0 +1,13 @@
+
+<h1>Showing Details of <%= @product.name %></h1>
+<div>
+  <h3>Count </h3>
+  <p><%= @product.count %></p>
+  <h3>Price</h3>
+  <p><%= @product.price %></p>
+</div>
+<div>
+  <%#= link_to 'Buy' , new_customer_session_path, :action => "reduce" %>
+  <%= link_to "Buy", sales_path(product_id: @product.id, price:@product.price) %>
+
+</div>  
