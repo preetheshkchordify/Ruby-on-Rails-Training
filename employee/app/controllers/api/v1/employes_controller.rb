@@ -6,11 +6,7 @@ class Api::V1::EmployesController < ApplicationController
   end
 
   def show
-    if @employ
-      render json: { message: 'EmployeeDetails', data: @employ }, status: :ok
-    else
-      render json: { message: 'Unable to find the employee' }, status: :bad_request
-    end
+    render json: { message: 'EmployeeDetails', data: @employ }, status: :ok
   end
 
   def create
@@ -28,33 +24,27 @@ class Api::V1::EmployesController < ApplicationController
   end
 
   def update
-
-    if @employ
-      @employ.update(employ_params)
-      if @employ.errors.present?
-        render json: { message: @employ.errors.full_messages }, status: :bad_request
-      else
-        render json: { message: 'Employee details updated', data: @employ }, status: :ok
-      end
+    @employ.update(employ_params)
+    if @employ.errors.present?
+      render json: { message: @employ.errors.full_messages }, status: :bad_request
     else
-      render json: { message: 'Employee Details cannot be updated' }, status: :bad_request
+      render json: { message: 'Employee details updated', data: @employ }, status: :ok
     end
   end
 
 
   def destroy
-    if @employ
-      @employ.destroy
-      render json: { message: 'Employee Deleted' }, status: :ok
-    else
-      render json: { message: 'Cannot find the employee' }, status: :not_found
-    end
+    @employ.destroy
+    render json: { message: 'Employee Deleted' }, status: :ok
   end
 
   private
 
   def set_employ
     @employ = Employe.find_by(id: params[:id])
+    if !@employ.present?
+      render json: { message: 'Cannot find the employee' }, status: :not_found
+    end
   end
 
   def employ_params
