@@ -1,5 +1,7 @@
 class Api::V1::EmployesController < ApplicationController
+  before_action :authorize_request
   before_action :set_employ, only: %i[show update destroy]
+
 
   def index
     render json: { message: 'EmployeeList', data: Employe.all.order(:id) }, status: :ok
