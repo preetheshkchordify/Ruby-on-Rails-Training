@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :users, param: :_username
   post '/auth/login', to: 'authentication#login'
   # get '/a', to: 'application#not_found'
-
+  resources :clients
+  get 'client_data/active', to: 'clients#active'
+  resources :projects
   # Defines the root path route ("/")
   # root "articles#index"
   namespace :api do
