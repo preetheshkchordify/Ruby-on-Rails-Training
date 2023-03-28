@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :authorize_request, except: :create
-  before_action :find_user, except: %i[create index]
+  before_action :find_user, only: %i[update destroy show]
 
   # GET /users
   def index
@@ -27,28 +27,29 @@ class UsersController < ApplicationController
 
   # PUT /users/{username}
   def update
-    unless @user.update(user_params)
-      render json: { errors: @user.errors.full_messages },
-             status: :unprocessable_entity
+    # binding.pry
+    @user.update(project_params)
+    if @user.errors.present?
+      render json: { message: @user.errors.full_messages }, status: :bad_request
+    else
+      render json: { message: 'user details updated', data: @user }, status: :ok
     end
   end
 
   # DELETE /users/{username}
   def destroy
     @user.destroy
+    render json: { message: 'Status updated' }
   end
 
   private
 
-  def find_user
-    @user = User.find_by_username!(params[:_username])
-    rescue ActiveRecord::RecordNotFound
-      render json: { errors: 'User not found' }, status: :not_found
+  def find_user    
+    @user = User.find_by(id: params[:_username])
+    render json: { message: 'Cannot find the user' }, status: :not_found unless @user.present?
   end
 
   def user_params
-    params.permit(
-      :avatar, :name, :username, :email, :password, :password_confirmation, :experience, :location, :designation_id, :department
-    )
+    params.permit(:name, :username, :email, :password, :password_confirmation, :experience, :location, :designation_id, :department)
   end
 end
