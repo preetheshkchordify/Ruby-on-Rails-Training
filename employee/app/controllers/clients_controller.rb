@@ -1,7 +1,7 @@
 class ClientsController < ApplicationController
-
-  before_action :set_client, only: %i[show update destroy]
-
+  before_action :authorize_request
+  before_action :admin, only: %i[create update destroy]
+  before_action :set_client, only: %i[show]
 
   def index
     @clients = Client.all
@@ -10,7 +10,7 @@ class ClientsController < ApplicationController
 
   def active
     @client = Client.where(is_active: true)
-    render json: { data: @client}
+    render json: { data: @client }
   end
 
   def create
@@ -37,7 +37,6 @@ class ClientsController < ApplicationController
   end
 
   def destroy
-    # binding.pry
     @client.is_active = false
     @client.save
   end
@@ -46,14 +45,18 @@ class ClientsController < ApplicationController
 
   def set_client
     @client = Client.find_by(id: params[:id])
-    if !@client.present?
-      render json: { message: 'Cannot find the client' }, status: :not_found
+    render json: { message: 'Cannot find the client' }, status: :not_found unless @client.present?
+  end
+
+  def admin
+    @client = Client.find_by(id: params[:id])
+    @user = @current_user.roles.first.name
+    if @user == 'user'
+      render json: { message: 'You have no access' }
     end
   end
 
   def client_params
     params.require(:client).permit(:name, :email, :location)
   end
-
-
 end

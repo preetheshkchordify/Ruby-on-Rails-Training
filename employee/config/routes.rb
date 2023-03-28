@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   resources :clients
   get 'client_data/active', to: 'clients#active'
   resources :projects
+  get 'project_data/active', to: 'projects#active'
+  resources :roles
+  resources :user_projects
+  resources :designations
+  resources :user_roles
   # Defines the root path route ("/")
   # root "articles#index"
   namespace :api do

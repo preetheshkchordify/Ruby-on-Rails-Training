@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
 
-   before_action :authorize_request, except: :create
+  before_action :authorize_request, except: :create
   before_action :find_user, except: %i[create index]
 
   # GET /users
   def index
-    @users = User.all.where(id: 2)
+    @users = User.all
     render json: @users, status: :ok
   end
 
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.permit(
-      :avatar, :name, :username, :email, :password, :password_confirmation
+      :avatar, :name, :username, :email, :password, :password_confirmation, :experience, :location, :designation_id, :department
     )
   end
 end
