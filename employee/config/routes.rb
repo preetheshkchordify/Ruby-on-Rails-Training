@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'client_data/active', to: 'clients#active'
   resources :projects
   get 'project_data/active', to: 'projects#active'
+  
   resources :roles
   resources :user_projects
   resources :designations

@@ -44,14 +44,14 @@ class DesignationsController < ApplicationController
 
   def admin
     @designation = Designation.find_by(id: params[:id])
-    @user = @current_user.roles.first.name
-    if @user == 'user'
+    @role = @current_user.roles&.first&.name
+    if @role == 'user'
       render json: { message: 'You have no access' }
     end
   end
 
   def designation_params
-    params.require(:designation).permit(:name, :code)
+    params.permit(:name, :code)
   end
 
 end

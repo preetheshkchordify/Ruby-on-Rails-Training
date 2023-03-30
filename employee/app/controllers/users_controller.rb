@@ -2,19 +2,17 @@ class UsersController < ApplicationController
 
   before_action :authorize_request, except: :create
   before_action :find_user, only: %i[update destroy show]
+  before_action :admin, only: %i[update]
 
-  # GET /users
   def index
     @users = User.all
     render json: @users, status: :ok
   end
 
-  # GET /users/{username}
   def show
     render json: @user, status: :ok
   end
 
-  # POST /users
   def create
     @user = User.new(user_params)
     if @user.save
@@ -25,10 +23,14 @@ class UsersController < ApplicationController
     end
   end
 
-  # PUT /users/{username}
+  def show
+    render json: @user, status: :ok
+  end
+
   def update
-    # binding.pry
-    @user.update(project_params)
+    @user = User.find_by(id: params[:_username])
+    @user.update(permission: params[:permission])
+    
     if @user.errors.present?
       render json: { message: @user.errors.full_messages }, status: :bad_request
     else
@@ -36,7 +38,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/{username}
   def destroy
     @user.destroy
     render json: { message: 'Status updated' }
@@ -44,7 +45,18 @@ class UsersController < ApplicationController
 
   private
 
-  def find_user    
+  def admin
+    binding.pry
+    @user = User.find_by(id: params[:id])
+    @role = @current_user.roles&.first&.name
+    if @role == 'user'
+      render json: { message: 'You have no access' }
+    elsif @role == nil
+      render json: { message: 'You have no access' }
+    end
+  end
+
+  def find_user  
     @user = User.find_by(id: params[:_username])
     render json: { message: 'Cannot find the user' }, status: :not_found unless @user.present?
   end

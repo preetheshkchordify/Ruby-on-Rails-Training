@@ -50,8 +50,8 @@ class UserProjectsController < ApplicationController
 
   def admin
     @userproject = UserProject.find_by(id: params[:id])
-    @user = @current_user.roles.first.name
-    if @user == 'user'
+    @role = @current_user.roles&.first&.name
+    if @role == 'user'
       render json: { message: 'You have no access'}
     end
   end

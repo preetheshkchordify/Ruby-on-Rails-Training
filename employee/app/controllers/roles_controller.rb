@@ -21,8 +21,8 @@ class RolesController < ApplicationController
   private
 
   def admin
-    @user = @current_user.roles.first.name
-    if @user == 'user'
+    @role = @current_user.roles&.first&.name
+    if @role == 'user'
       render json: { message: 'You have no access'}
     end
   end
