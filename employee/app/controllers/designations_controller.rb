@@ -9,9 +9,31 @@ class DesignationsController < ApplicationController
     page = params[:page].to_i || 1
     per_page = params[:length].to_i || 10
     offset = (page - 1) * per_page
-    search = params[:search]
+    order_column_index = params[:order]['0'][:column].to_i
+    order_column_direction = params[:order]['0'][:dir]
+    search = params[:search][:value].downcase.strip
+
+
+    sortable_columns = ['name', 'code']
+
+    if order_column_index >= 0 && order_column_index < sortable_columns.length
+      column_name = sortable_columns[order_column_index]
+    else
+      column_name = 'id'
+    end
+
+
+    if order_column_direction == 'asc'
+      order_direction = :asc
+    else
+      order_direction = :desc
+    end
     @total_count = Designation.all.count
-    @designation = Designation.offset(offset).limit(per_page).order(:id)
+    if search.present?
+      @designation = Designation.order("#{column_name} #{order_direction}").offset(offset).limit(per_page).where("lower(name) LIKE ? OR lower(code) LIKE ?", "%#{search}%", "%#{search}%")
+    else
+      @designation = Designation.order("#{column_name} #{order_direction}").offset(offset).limit(per_page)
+    end
     render json: {
       data: @designation,
       recordsTotal: @total_count ,
