@@ -5,8 +5,19 @@ class DesignationsController < ApplicationController
 
 
   def index
-    @designation = Designation.all
-    render json: @designation, status: :ok
+    
+    page = params[:page].to_i || 1
+    per_page = params[:length].to_i || 10
+    offset = (page - 1) * per_page
+    search = params[:search]
+    @total_count = Designation.all.count
+    @designation = Designation.offset(offset).limit(per_page).order(:id)
+    render json: {
+      data: @designation,
+      recordsTotal: @total_count ,
+      recordsFiltered: @total_count
+    }
+
   end
 
   def active

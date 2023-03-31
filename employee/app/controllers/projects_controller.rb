@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: %i[show]
 
   def index
-    @project = Project.all
+    @project = Project.all.order(:id)
     render json: @project, status: :ok
   end
 
